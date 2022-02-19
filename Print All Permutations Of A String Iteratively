@@ -1,0 +1,74 @@
+/*
+1. You are given a string. 
+2. You have to print all permutations of the given string iteratively.
+
+Sample Input
+
+abc
+
+Sample Output
+abc
+bac
+cab
+acb
+bca
+cba
+
+*/
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	public static int factorial(int n)
+	{
+		int rf=1;
+
+		for(int i=1;i<=n;i++)
+		{
+			rf=rf*i;
+
+		}
+		return rf;
+	}
+
+	public static void solution(String str){
+		
+		int x=str.length();
+
+		int f=factorial(x);
+
+		for(int i=0;i<f;i++)
+		{
+			StringBuilder sb=new StringBuilder(str);
+			
+
+			int dividend=i;
+
+			for(int div=str.length();div>=1;div--)
+			{
+				
+
+				int quotient = dividend/div;
+				int remainder= dividend%div;
+
+				System.out.print(sb.charAt(remainder));
+
+				sb.deleteCharAt(remainder);
+
+
+				dividend=quotient;
+
+			}
+			System.out.println();
+
+		}
+		
+	}
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String str = scn.next();
+		solution(str);
+	}
+
+}
